@@ -1,0 +1,21 @@
+.Header {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+}
+
+.Header_Button {
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, .03);
+    }
+
+    &.Header_Button-selected {
+        background-color: rgba(0, 0, 0, .03);
+    }
+}
