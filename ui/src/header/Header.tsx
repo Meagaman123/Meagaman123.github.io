@@ -1,38 +1,25 @@
+import React from 'react';
+import { useState } from 'react';
 import './css/Header.css';
 
-import React from 'react';
-
-interface Props {
+interface MainProps {
+  setPodLoader: React.Dispatch<React.SetStateAction<number>>
 }
 
-interface State {
-  selectedIndex: number;
-}
+const Header = (props: MainProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(1)
 
-class Header extends React.Component< Props , State> {
-  constructor(props: Props){
-    super(props)
-    this.state = {
-      selectedIndex: 1,
-    }
-
-    this.onclick = this.onclick.bind(this);
+  function onclick(selectedIndex: number)  {
+    setSelectedIndex(selectedIndex)
+    props.setPodLoader(selectedIndex)
   }
 
-  onclick(selectedIndex: number): void {
-    this.setState({
-      selectedIndex: selectedIndex, 
-    })
-  }
-
-  render() {
-    return (
-      <div className='Header'>
-        <div className={`Header_Button ${this.state.selectedIndex === 1 ? 'Header_Button-selected': ''}`} onClick={() => this.onclick(1)}>ClashRoyale Leader Helper</div>
-        <div className={`Header_Button ${this.state.selectedIndex === 2 ? 'Header_Button-selected': ''}`} onClick={() => this.onclick(2)}>Premier League Predictions</div>
-      </div>
-    );
-  }
+  return (
+    <div className='Header'>
+      <div className={`Header_Button ${selectedIndex === 1 ? 'Header_Button-selected': ''}`} onClick={() => onclick(1)}>Premier League Predictions</div>
+      <div className={`Header_Button ${selectedIndex === 2 ? 'Header_Button-selected': ''}`} onClick={() => onclick(2)}>ClashRoyale Leader Helper</div>
+    </div>
+  );
 }
 
 export default Header;
