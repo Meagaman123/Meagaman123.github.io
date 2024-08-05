@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header setPodLoader= {setPodLoader}/>
+      <Header setPodLoader = {setPodLoader}/>
       <PodLoader selectedPod = {selectedPod} />
     </div>
   );

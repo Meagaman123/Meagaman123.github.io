@@ -1,0 +1,24 @@
+.PillMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.PillMenu_Button {
+    color: rgba(255,255,255,.8);
+    cursor: pointer;
+    padding: 5px 10px;
+
+    &:hover {
+        color: rgba(255,255,255,1);
+    }
+
+    &.PillMenu_Button-selected {
+        border-radius: 20px;
+        background-color: green;
+        font-weight: bold;
+        color: black;
+    }
+}
