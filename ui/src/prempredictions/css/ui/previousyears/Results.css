@@ -1,0 +1,9 @@
+.Results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Results_Item {
+    color: white;
+}

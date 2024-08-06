@@ -1,25 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
 import '../../css/ui/previousyears/PillMenu.css';
+import { Prediction, Positions } from '../../datautil/DataInterfaces';
 
-const allYears = [{
-        year: "2023/2024",
-        id: 0
-    },{
-        year: "2022/2023",
-        id: 1
-    }
-];
+interface Props {
+    resultsData: Positions[]
+    setYearChosen: React.Dispatch<React.SetStateAction<string>>
+}
 
-const PillMenu = () => {
-    const [selectedIndex, setSelectedIndex] = useState(0)
+const PillMenu = (props: Props) => {
+    const [selectedIndex, setSelectedIndex] = useState(props.resultsData[0].year)
 
-    function clickHandler(selectedIndex: number) {
+    function clickHandler(selectedIndex: string) {
         setSelectedIndex(selectedIndex)
+        props.setYearChosen(selectedIndex)
     }
 
-    const listOfYears = allYears.map(allYears => 
-        <div className={`PillMenu_Button ${selectedIndex === allYears.id ? 'PillMenu_Button-selected': ''}`} onClick={() => {clickHandler(allYears.id)}}>{allYears.year} </div>
+    const listOfYears = props.resultsData.map(resultsData => 
+        <div className={`PillMenu_Button ${selectedIndex === resultsData.year ? 'PillMenu_Button-selected': ''}`} onClick={() => {clickHandler(resultsData.year)}}>{resultsData.year} </div>
     );
 
   return (
