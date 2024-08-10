@@ -9,20 +9,19 @@ interface MainProps {
 }
 
 const PodLoader = (props : MainProps) => {
-
-    function setSelectedPod(){
-        switch (props.selectedPod) {
-            case 2:
-                return <ClashRoyale />
-        
-            default:
-                return <PremierLeaguePredictions />
-        }
+    
+    let selectedPod;
+    switch (props.selectedPod) {
+        case 2:
+            selectedPod = <ClashRoyale />
+            break;
+        default:
+            selectedPod = <PremierLeaguePredictions />
     }
 
     return (
         <div className='PodLoader'>
-            {setSelectedPod()}
+            {selectedPod}
         </div>
     );
 }

@@ -17,7 +17,7 @@ const TabMenu = (props: Props) => {
     }
 
     const listOfSorts = SortTypes.map(sortType => 
-        <div className={`TabMenu_Button ${sortChosen === sortType.sortType ? 'TabMenu_Button-selected': ''}`} onClick={() => {clickHandler(sortType.sortType)}}>{sortType.name} </div>
+        <div className={`TabMenu_Button ${sortChosen === sortType.sortType ? 'TabMenu_Button-selected': ''}`} title={sortType.name} onClick={() => {clickHandler(sortType.sortType)}}>{sortType.name} </div>
     );
 
   return (

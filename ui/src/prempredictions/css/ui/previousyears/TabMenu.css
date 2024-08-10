@@ -21,4 +21,13 @@
         font-weight: bold;
         border-bottom: 1px solid white;
     }
+
+    &:before {
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
 }
