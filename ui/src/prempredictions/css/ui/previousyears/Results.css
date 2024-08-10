@@ -1,9 +1,19 @@
 .Results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    justify-content: center;
+    grid-template: auto / auto auto;
+    column-gap: 20px;
+    justify-items: center;
 }
 
-.Results_Item {
+.Results_Title {
+    color: white;
+}
+
+.Results_Name {
+    color: white;
+}
+
+.Results_Points {
     color: white;
 }
