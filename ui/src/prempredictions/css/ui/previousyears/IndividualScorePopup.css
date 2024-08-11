@@ -1,0 +1,66 @@
+.IndividualScorePopup {
+    position: absolute;
+    background: white;
+    top: 0;
+    transform: translateX(-50%);
+    width: fit-content;
+    z-index: 99;
+}
+
+.IndividualScorePopup_TopBar{
+    padding: 10px;
+    background: rgb(210, 210, 210);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.IndividualScorePopup_Cross{
+    height: 20px;
+    width: 20px;
+    background-image: url(./assets/Cross.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        color: rgb(255, 0, 0);
+    }
+    
+    &::after {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.IndividualScorePopup_Header{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.IndividualScorePopup_Table{
+    display: grid;
+    gap: 10px;
+    grid-template: auto / auto auto auto auto auto;
+    padding: 10px;
+    justify-items: center;
+}
+
+.IndividualScorePopup_TeamName {
+    color: black;
+}
+
+.IndividualScorePopup_Position {
+    color: black;
+}
+
+.IndividualScorePopup_Points {
+    color: black;
+}
+
+.IndividualScorePopup_Title {
+    color: black;
+    font-weight: bold;
+}

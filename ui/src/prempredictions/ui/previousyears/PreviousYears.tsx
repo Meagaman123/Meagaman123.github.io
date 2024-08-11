@@ -4,11 +4,11 @@ import PillMenu from './PillMenu';
 import { useState } from 'react';
 import Results from './Results';
 import TabMenu from './TabMenu';
-import { sortResults, SortType, SortTypes } from './Sorter';
+import { sortResults, SortTypes } from './Sorter';
 
 const PreviousYears = () => {
   const [yearChosen, setYearChosen] = useState(Object.keys(FakeData)[0])
-  const [sortChosen, setSortChosen] = useState(SortType.Diffrence)
+  const [sortChosen, setSortChosen] = useState(Object.keys(SortTypes)[0])
 
   const sortedResults = sortResults(sortChosen, FakeData[yearChosen].predictions, FakeData[yearChosen].result)
 
@@ -17,7 +17,7 @@ const PreviousYears = () => {
         <div className='PreviousYears_Title'>Previous Years</div>
         <PillMenu data={FakeData} setYearChosen={setYearChosen}/>
         <TabMenu sortType={SortTypes} setPointChosen={setSortChosen}/>
-        <Results results={sortedResults}/>
+        <Results results={sortedResults} data={FakeData[yearChosen]}/>
     </div>
   );
 }

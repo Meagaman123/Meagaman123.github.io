@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../css/ui/previousyears/InfoButton.css';
-import InfoPopup from './InfoPopup';
+import '../../css/ui/previousyears/InfoButtonIndividual.css';
+import InfoPopupDark from './InfoPopupDark';
 
 interface Props {
     sortType: string
@@ -9,7 +9,7 @@ interface Props {
     setOpenPopup: React.Dispatch<React.SetStateAction<string>>
 }
 
-const InfoButton = (props: Props) => {
+const InfoButtonIndividual = (props: Props) => {
 
     function clickHandler() {
         if(props.openPopup  === props.sortType){
@@ -21,15 +21,15 @@ const InfoButton = (props: Props) => {
 
     let popup = null;
     if(props.openPopup === props.sortType){
-        popup = <InfoPopup description={props.description}></InfoPopup>
+        popup = <InfoPopupDark description={props.description}></InfoPopupDark>
     }
 
     
   return (
-    <div className='InfoButton' onClick={clickHandler}>
+    <div className='InfoButtonIndividual' onClick={clickHandler}>
         {popup}
     </div>
   );
 }
 
-export default InfoButton;
+export default InfoButtonIndividual;

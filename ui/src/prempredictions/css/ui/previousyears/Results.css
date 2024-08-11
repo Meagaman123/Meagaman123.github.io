@@ -3,14 +3,11 @@
     justify-content: center;
     grid-template: auto / auto auto auto;
     column-gap: 20px;
+    row-gap: 10px;
     justify-items: center;
 }
 
 .Results_Title {
-    color: white;
-}
-
-.Results_Name {
     color: white;
 }
 

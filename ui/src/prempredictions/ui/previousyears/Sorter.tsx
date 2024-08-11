@@ -1,50 +1,34 @@
 import { Prediction, Result, TeamPosition } from "../../datautil/DataInterfaces"
 
-export enum SortType{
-    Diffrence,
-    ClosestMatch
-}
+export const SortTypes: {[sortType: string]: {description: string, calculatePoints: (predictionPosition: TeamPosition[], resultPosition: TeamPosition[]) => number}} = 
+{
+    ["Diffrence"]: {description: "For each position you are off by you gain 1 point. (Lower points are better)", calculatePoints: calculatePointsDiffrence},
+    ["Closest Match"]: {description: "You get 2 points for an exact position match and 1 point if you are within, 1 place of the correct position. (Higher score is better)", calculatePoints: calculatePointsClosestMatch}
+} 
 
-export const SortTypes: {name: string, sortType: SortType, description: string}[] = [
-    {name: "Diffrence", sortType: SortType.Diffrence, description: "For each position you are off by you gain 1 point. (Lower points are better)"}, 
-    {name: "Closest Match", sortType: SortType.ClosestMatch, description: "You get 2 points for an exact position match and 1 point if you are within, 1 place of the correct position. (Higher score is better)"}
-] 
-
-export function sortResults(sortType: SortType, predictions: Prediction[], result: TeamPosition[]) {
+export function sortResults(sortType: string, predictions: Prediction, result: TeamPosition[]) {
     const resultsSorted: Result[] = []
   
-    for (const prediction of predictions) {
-        if (sortType === SortType.Diffrence) {
-            const resultSorted: Result = {
-                name: prediction.name,
-                points: calculatePointsDiffrence(prediction, result)
-            }
-            resultsSorted.push(resultSorted)
-        } else if (sortType === SortType.ClosestMatch) {
-            const resultSorted: Result = {
-                name: prediction.name,
-                points: calculatePointsClosestMatch(prediction, result)
-            }
-            resultsSorted.push(resultSorted)
+    for (const name in predictions) {
+        const resultSorted: Result = {
+            name: name,
+            points: SortTypes[sortType].calculatePoints(predictions[name], result)
         }
-  
+        resultsSorted.push(resultSorted)
     }
-    
-    if (sortType === SortType.Diffrence) {
+        
+    if (sortType === "Diffrence") {
         const sortedArray: Result[] = resultsSorted.sort((n1,n2) => n1.points - n2.points);
         return sortedArray
     } else {
         const sortedArray: Result[] = resultsSorted.sort((n1,n2) => n2.points - n1.points );
         return sortedArray
     }
-  
-   
   }
   
-  function calculatePointsDiffrence(predictions: Prediction, result: TeamPosition[]): number {
+  function calculatePointsDiffrence(predictions: TeamPosition[], result: TeamPosition[]): number {
     let diffrence = 0;
-  
-    for (const prediction of predictions.prediction) {
+    for (const prediction of predictions) {
         for (const singleresult of result) {
             if (prediction.team === singleresult.team) {
                 if (prediction.position > singleresult.position) {
@@ -59,16 +43,14 @@ export function sortResults(sortType: SortType, predictions: Prediction[], resul
     return diffrence
   }
   
-  function calculatePointsClosestMatch(predictions: Prediction, result: TeamPosition[]): number {
+function calculatePointsClosestMatch(predictions: TeamPosition[], result: TeamPosition[]): number {
     let points = 0;
-  
-    for (const prediction of predictions.prediction) {
+    for (const prediction of predictions) {
         for (const singleresult of result) {
             if (prediction.team === singleresult.team) {
                 if (prediction.position === singleresult.position) {
                     points += 2
-                }
-                else if (prediction.position - singleresult.position === 1 || prediction.position - singleresult.position === -1) {
+                } else if (prediction.position - singleresult.position === 1 || prediction.position - singleresult.position === -1) {
                     points += 1
                 }
             }
@@ -76,4 +58,4 @@ export function sortResults(sortType: SortType, predictions: Prediction[], resul
     }
   
     return points
-  }
+}

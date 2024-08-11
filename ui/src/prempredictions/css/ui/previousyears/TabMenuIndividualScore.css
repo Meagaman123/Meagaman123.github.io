@@ -1,0 +1,44 @@
+.TabMenuIndividualScore {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.TabMenuIndividualScore_Item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    &.TabMenuIndividualScore_Item-selected {
+        border-bottom: 1px solid black;
+    }
+}
+
+.TabMenuIndividualScore_Button {
+    color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    padding: 10px;
+    line-height: 15px;
+
+
+    &:hover {
+        color: rgb(0, 0, 0);
+    }
+
+    .TabMenuIndividualScore_Item-selected & {
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        cursor: default;
+    }
+
+    &:before {
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+}
