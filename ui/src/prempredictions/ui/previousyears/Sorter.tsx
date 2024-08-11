@@ -5,7 +5,10 @@ export enum SortType{
     ClosestMatch
 }
 
-export const SortTypes: {name: string, sortType: SortType}[] = [{name: "Diffrence", sortType: SortType.Diffrence}, {name: "Closest Match", sortType: SortType.ClosestMatch}] 
+export const SortTypes: {name: string, sortType: SortType, description: string}[] = [
+    {name: "Diffrence", sortType: SortType.Diffrence, description: "For each position you are off by you gain 1 point. (Lower points are better)"}, 
+    {name: "Closest Match", sortType: SortType.ClosestMatch, description: "You get 2 points for an exact position match and 1 point if you are within, 1 place of the correct position. (Higher score is better)"}
+] 
 
 export function sortResults(sortType: SortType, predictions: Prediction[], result: TeamPosition[]) {
     const resultsSorted: Result[] = []

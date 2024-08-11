@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import '../../css/ui/previousyears/TabMenu.css';
 import { SortType, SortTypes } from './Sorter';
+import InfoButton from './InfoButton';
 
 interface Props {
     sortType: typeof SortTypes
@@ -10,6 +11,7 @@ interface Props {
 
 const TabMenu = (props: Props) => {
     const [sortChosen, setSortChosen] = useState(SortTypes[0].sortType)
+    const [openPopup, setOpenPopup] = useState(-1 || SortType)
 
     function clickHandler(sortType: SortType) {
         setSortChosen(sortType)
@@ -17,7 +19,11 @@ const TabMenu = (props: Props) => {
     }
 
     const listOfSorts = SortTypes.map(sortType => 
-        <div className={`TabMenu_Button ${sortChosen === sortType.sortType ? 'TabMenu_Button-selected': ''}`} title={sortType.name} onClick={() => {clickHandler(sortType.sortType)}}>{sortType.name} </div>
+        <div className={`TabMenu_Item ${sortChosen === sortType.sortType ? 'TabMenu_Item-selected': ''}`}>
+            <div className={`TabMenu_Button`} title={sortType.name} onClick={() => {clickHandler(sortType.sortType)}}>{sortType.name} </div>
+            <InfoButton sortType={sortType.sortType} description={sortType.description} openPopup={openPopup} setOpenPopup={setOpenPopup}></InfoButton>
+        </div>
+        
     );
 
   return (
