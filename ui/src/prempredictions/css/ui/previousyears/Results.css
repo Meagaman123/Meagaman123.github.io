@@ -1,7 +1,7 @@
 .Results {
     display: grid;
     justify-content: center;
-    grid-template: auto / auto auto;
+    grid-template: auto / auto auto auto;
     column-gap: 20px;
     justify-items: center;
 }
@@ -16,4 +16,29 @@
 
 .Results_Points {
     color: white;
+}
+
+.Results_Image{
+    width: 20px;
+}
+
+.Results_Image-gold{
+    background-image: url(./assets/gold.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Results_Image-silver {
+    background-image: url(./assets/silver.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Results_Image-bronze {
+    background-image: url(./assets/bronze.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }

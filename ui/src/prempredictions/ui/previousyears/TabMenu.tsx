@@ -23,7 +23,6 @@ const TabMenu = (props: Props) => {
             <div className={`TabMenu_Button`} title={sortType.name} onClick={() => {clickHandler(sortType.sortType)}}>{sortType.name} </div>
             <InfoButton sortType={sortType.sortType} description={sortType.description} openPopup={openPopup} setOpenPopup={setOpenPopup}></InfoButton>
         </div>
-        
     );
 
   return (
